@@ -24,9 +24,9 @@ public class Servlet extends HttpServlet {
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
 			
-			String guestbookName = req.getParameter("guestbookName");
+			String blogAppName = req.getParameter("blogAppName");
 			
-			Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
+			Key guestbookKey = KeyFactory.createKey("BlogApp", blogAppName);
 			String content = req.getParameter("content");
 			Date date = new Date();
 			Entity greeting = new Entity("Greeting", guestbookKey);
@@ -37,7 +37,7 @@ public class Servlet extends HttpServlet {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			datastore.put(greeting);
 			
-			resp.sendRedirect("/guestbook.jsp?guestbookName=" + guestbookName);
+			resp.sendRedirect("/blogAppName.jsp?blogAppName=" + blogAppName);
 	}
 
 }
