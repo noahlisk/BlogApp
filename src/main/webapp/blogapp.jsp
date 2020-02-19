@@ -40,15 +40,15 @@
 
 <%
 
-    String guestbookName = request.getParameter("guestbookName");
+    String blogAppName = request.getParameter("blogAppName");
 
-    if (guestbookName == null) {
+    if (blogAppName == null) {
 
-        guestbookName = "default";
+    	blogAppName = "default";
 
     }
 
-    pageContext.setAttribute("guestbookName", guestbookName);
+    pageContext.setAttribute("blogAppName", blogAppName);
 
     UserService userService = UserServiceFactory.getUserService();
 
@@ -88,15 +88,15 @@ to include your name with greetings you post.</p>
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-    Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
+    Key blogAppKey = KeyFactory.createKey("BlogApp", blogAppName);
 
     // Run an ancestor query to ensure we see the most up-to-date
 
     // view of the Greetings belonging to the selected Guestbook.
 
-    Query query = new Query("Greeting", guestbookKey).addSort("user", Query.SortDirection.DESCENDING).addSort("date", Query.SortDirection.DESCENDING);
+    Query query = new Query("Greeting", blogAppKey).addSort("user", Query.SortDirection.DESCENDING).addSort("date", Query.SortDirection.DESCENDING);
 
-    List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
+    List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(10));
 
     if (greetings.isEmpty()) {
 
@@ -156,7 +156,7 @@ to include your name with greetings you post.</p>
 
       <div><input type="submit" value="Post Greeting" /></div>
 
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
+      <input type="hidden" name="blogAppName" value="${fn:escapeXml(blogAppName)}"/>
 
     </form>
 
