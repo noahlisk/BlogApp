@@ -26,10 +26,10 @@ public class Servlet extends HttpServlet {
 			
 			String blogAppName = req.getParameter("blogAppName");
 			
-			Key guestbookKey = KeyFactory.createKey("BlogApp", blogAppName);
+			Key blogAppKey = KeyFactory.createKey("BlogApp", blogAppName);
 			String content = req.getParameter("content");
 			Date date = new Date();
-			Entity greeting = new Entity("Greeting", guestbookKey);
+			Entity greeting = new Entity("Greeting", blogAppKey);
 			greeting.setProperty("user", user);
 			greeting.setProperty("date", date);
 			greeting.setProperty("content", content);
