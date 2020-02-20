@@ -102,7 +102,7 @@ to include your name with greetings you post.</p>
 
         %>
 
-        <p>Guestbook '${fn:escapeXml(guestbookName)}' has no messages.</p>
+        <p>blogApp '${fn:escapeXml(blogAppName)}' has no messages.</p>
 
         <%
 
