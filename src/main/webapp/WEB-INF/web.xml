@@ -5,23 +5,57 @@
          version="3.1">
         
         <servlet>
-        	
-        	<servlet-name>blogapp</servlet-name>
-        	
-        	<servlet-class>blogapp.SignServlet</servlet-class>
-        
+        	<servlet-name>sign</servlet-name>
+        	<servlet-class>blogapp.Servlet</servlet-class>
         </servlet>
         
         <servlet-mapping>
+           	<servlet-name>sign</servlet-name>
+           	<url-pattern>/sign</url-pattern>
+        </servlet-mapping>
         
-        	<servlet-name>blogapp</servlet-name>
+        <servlet>
+        	<servlet-name>postBlog</servlet-name>
+        	<jsp-file>/postBlog.jsp</jsp-file>
+        </servlet>
         
-        	<url-pattern>/blogapp</url-pattern>
-                
+        <servlet-mapping>
+        	<servlet-name>postBlog</servlet-name>
+        	<url-pattern>/postBlog</url-pattern>
+        </servlet-mapping>
+        
+        <servlet>
+        	<servlet-name>seeAllServlet</servlet-name>
+        	<servlet-class>blogapp.seeAllServlet</servlet-class>
+        </servlet>
+        
+        <servlet-mapping>
+        	<servlet-name>seeAllServlet</servlet-name>
+        	<url-pattern>/seeAll</url-pattern>
+        </servlet-mapping>
+        
+        <servlet>
+        	<servlet-name>cron</servlet-name>
+        	<servlet-class>blogapp.cron</servlet-class>
+        </servlet>
+        
+        <servlet-mapping>
+        	<servlet-name>cron</servlet-name>
+        	<url-pattern>/dailyupdate</url-pattern>
+        </servlet-mapping>
+        
+             <servlet>
+        	<servlet-name>subscribe</servlet-name>
+        	<servlet-class>blogapp.subServlet</servlet-class>
+        </servlet>
+        
+        <servlet-mapping>
+        	<servlet-name>subscribe</servlet-name>
+        	<url-pattern>/subscribe</url-pattern>
         </servlet-mapping>
 	         
          
   <welcome-file-list>
-    <welcome-file>blogapp.jsp</welcome-file>
+    <welcome-file>blogApp.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

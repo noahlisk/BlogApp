@@ -16,9 +16,13 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+
 
 
 public class SignServlet extends HttpServlet {
+	private static final Logger log = Logger.getLogger(SignServlet.class.getName());
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 			UserService userService = UserServiceFactory.getUserService();
@@ -36,6 +40,18 @@ public class SignServlet extends HttpServlet {
 			
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			datastore.put(greeting);
+
+	        if (content == null) {
+
+	            content = "(No greeting)";
+
+	        }
+			
+  		  if (user != null) {
+	            log.info("Greeting posted by user " + user.getNickname() + ": " + content);
+	        } else {
+		        log.info("Greeting posted anonymously: " + content);
+		    }
 			
 			resp.sendRedirect("/blogApp.jsp?blogAppName=" + blogAppName);
 			

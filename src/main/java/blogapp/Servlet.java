@@ -26,18 +26,22 @@ public class Servlet extends HttpServlet {
 			
 			String blogAppName = req.getParameter("blogAppName");
 			
-			Key blogAppKey = KeyFactory.createKey("BlogApp", blogAppName);
+			Key userKey = KeyFactory.createKey("Users", blogAppName);
+			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			Date date = new Date();
-			Entity greeting = new Entity("Greeting", blogAppKey);
+			Entity greeting = new Entity("Greeting", userKey);
 			greeting.setProperty("user", user);
 			greeting.setProperty("date", date);
 			greeting.setProperty("content", content);
+			greeting.setProperty("title", title);
 			
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			datastore.put(greeting);
 			
-			resp.sendRedirect("/blogAppName.jsp?blogAppName=" + blogAppName);
+			resp.sendRedirect("/blogApp.jsp?blogAppName=" + blogAppName);
+			
+			
 	}
 
 }
